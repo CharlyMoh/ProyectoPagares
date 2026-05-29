@@ -1,0 +1,125 @@
+.historial-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 0 20px;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+h2 {
+    color: #1a365d;
+    margin: 0;
+}
+
+.subtitle {
+    color: #718096;
+    font-size: 14px;
+    margin: 5px 0 0 0;
+}
+
+.btn-reporte-global {
+    background-color: #1a365d;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-reporte-global:hover {
+    background-color: #2c5282;
+}
+
+.table-responsive {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.tabla-auditoria {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 14px;
+}
+
+.tabla-auditoria th {
+    background-color: #2d3748;
+    color: white;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.tabla-auditoria td {
+    padding: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+}
+
+.tabla-auditoria tr:hover {
+    background-color: #f7fafc;
+}
+
+.abogado-tag {
+    background: #edf2f7;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #2d3748;
+    font-weight: 500;
+}
+
+.monto {
+    font-weight: bold;
+    color: #2b6cb0;
+}
+
+.badge-secuencia {
+    background: #e2e8f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn-pdf {
+    background: #276749;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-pdf:hover {
+    background: #1c4530;
+}
+
+.error-box {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+    color: #a0aec0;
+    padding: 30px !important;
+}

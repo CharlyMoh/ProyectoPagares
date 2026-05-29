@@ -1,0 +1,11 @@
+# Carpetas de dependencias pesadas
+despacho-backend/node_modules/
+despacho-frontend/node_modules/
+despacho-frontend/.angular/
+
+# Configuraciones locales de entorno
+despacho-backend/.env
+
+# Archivos sueltos del sistema operativo
+.DS_Store
+Thumbs.db

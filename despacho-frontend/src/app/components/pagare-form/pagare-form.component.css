@@ -1,0 +1,174 @@
+.container {
+    max-width: 950px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    color: #1a365d;
+    margin-bottom: 5px;
+}
+
+.info {
+    color: #718096;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.formitec-ticket {
+    border: 3px double #276749;
+    /* Verde oscuro estilo pagaré Formitec */
+    background-color: #f0fff4;
+    /* Fondo sutilmente verde */
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 15px;
+}
+
+.row-formitec {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 11px;
+    font-weight: bold;
+    color: #276749;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+input,
+select {
+    padding: 8px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    font-size: 13px;
+    background: #fff;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #276749;
+    box-shadow: 0 0 4px rgba(39, 103, 73, 0.3);
+}
+
+.legal-text {
+    font-size: 12px;
+    color: #2d3748;
+    font-style: italic;
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.widgets-inferiores {
+    border-top: 1px dashed #276749;
+    padding-top: 10px;
+    margin-top: 15px;
+}
+
+.panel-inferior {
+    background: #ffffff;
+    padding: 10px;
+    border: 1px solid #c6f6d5;
+    border-radius: 4px;
+}
+
+.panel-inferior h3 {
+    font-size: 12px;
+    margin: 0 0 10px 0;
+    color: #22543d;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 4px;
+}
+
+.bg-light {
+    background-color: #edf2f7;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.alert {
+    padding: 12px;
+    border-radius: 4px;
+    margin: 15px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.alert-success {
+    background: #c6f6d5;
+    color: #22543d;
+}
+
+.alert-danger {
+    background: #fed7d7;
+    color: #9b2c2c;
+}
+
+.action-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+.btn-submit {
+    background: #276749;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-submit:hover {
+    background: #1c4530;
+}
+
+.input-disabled {
+    background-color: #edf2f7 !important;
+    color: #4a5568;
+    cursor: not-allowed;
+    font-weight: 500;
+    border: 1px dashed #cbd5e0;
+}
+.textarea-formitec {
+    resize: none;
+    /* Evita que el usuario pueda estirar el cuadro manualmente */
+    font-size: 11px !important;
+    /* Reducimos ligeramente el tamaño base para textos largos */
+    line-height: 1.4;
+    padding: 6px 8px !important;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    height: 15px;
+    /* Forzamos una altura fija para que no mueva los campos de los lados */
+    white-space: normal;
+    /* Permite que el texto baje al siguiente renglón automáticamente */
+}
+
+/* Ajuste opcional para alinear el campo de Lugar de Pago con la nueva altura del textarea */
+.formitec-ticket .field.w-50 input {
+    height: auto;
+}

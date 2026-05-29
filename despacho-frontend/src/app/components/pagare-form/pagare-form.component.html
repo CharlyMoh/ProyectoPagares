@@ -1,0 +1,114 @@
+<div class="container">
+    <h2>Captura y Emisión de Pagarés</h2>
+    <p class="info">Complete los datos obligatorios del Artículo 170 de la LGTOC utilizando el formato Formitec.</p>
+
+    <form (ngSubmit)="registrarSerie()" class="form-formitec">
+
+        <div class="row-formitec border-box bg-light">
+            <div class="field w-50">
+                <label>No. Expediente / Caso Raíz (Automático)</label>
+                <input type="text" [(ngModel)]="pagareData.numero_expediente" name="numero_expediente" readonly
+                    class="input-disabled">
+            </div>
+            <div class="field w-25">
+                <label>¿Dividir en cuántos Pagarés?</label>
+                <input type="number" [(ngModel)]="pagareData.total_pagares" name="total_pagares" min="1" required>
+            </div>
+            <div class="field w-25">
+                <label>Monto Total ($)</label>
+                <input type="number" [(ngModel)]="pagareData.monto_total" (ngModelChange)="onMontoChange($event)"
+                    name="monto_total" step="0.01" required placeholder="0.00">
+            </div>
+        </div>
+
+        <div class="formitec-ticket">
+
+            <div class="row-formitec">
+                <div class="field w-50">
+                    <label>Lugar de Expedición / Suscripción</label>
+                    <input type="text" [(ngModel)]="pagareData.lugar_suscripcion" name="lugar_suscripcion" required
+                        placeholder="Puebla, Pue.">
+                </div>
+                <div class="field w-25">
+                    <label>Estado (Firma)</label>
+                    <select [(ngModel)]="pagareData.estado_suscripcion_id" name="estado_suscripcion_id" required>
+                        <option value="" disabled selected>Seleccione...</option>
+                        <option *ngFor="let edo of estados" [value]="edo.id">{{edo.nombre}}</option>
+                    </select>
+                </div>
+                <div class="field w-25">
+                    <label>Fecha Suscripción</label>
+                    <input type="date" [(ngModel)]="pagareData.fecha_suscripcion" name="fecha_suscripcion" required>
+                </div>
+            </div>
+
+            <div class="legal-text">
+                Debo(emos) y pagaré(mos) incondicionalmente sin pretexto este pagaré en el lugar y fechas citadas a la
+                orden de:
+            </div>
+
+            <div class="row-formitec">
+                <div class="field w-50">
+                    <label>Nombre del Beneficiario (A la orden de)</label>
+                    <input type="text" [(ngModel)]="pagareData.nombre_beneficiario" name="nombre_beneficiario" required>
+                </div>
+                <div class="field w-50">
+                    <label>Fecha de Vencimiento (Si es serie, incrementará mes con mes)</label>
+                    <input type="date" [(ngModel)]="pagareData.fecha_vencimiento_inicial"
+                        name="fecha_vencimiento_inicial" required>
+                </div>
+            </div>
+
+            <div class="row-formitec">
+                <div class="field w-50">
+                    <label>La cantidad de (Monto en letra - Automático)</label>
+                    <textarea [(ngModel)]="pagareData.monto_letra" name="monto_letra" readonly
+                        class="input-disabled textarea-formitec" rows="2"
+                        placeholder="Cero pesos 00/100 M.N."></textarea>
+                </div>
+                <div class="field w-50">
+                    <label>Lugar de Pago</label>
+                    <input type="text" [(ngModel)]="pagareData.lugar_pago" name="lugar_pago" required
+                        placeholder="En las oficinas del beneficiario">
+                </div>
+            </div>
+
+            <div class="row-formitec widgets-inferiores">
+
+                <div class="panel-inferior w-50">
+                    <h3>DATOS DEL DEUDOR</h3>
+                    <div class="field">
+                        <label>Seleccionar Deudor Registrado</label>
+                        <select [(ngModel)]="pagareData.deudor_id" name="deudor_id" required>
+                            <option value="" disabled selected>-- Seleccione un deudor --</option>
+                            <option *ngFor="let d of deudores" [value]="d.id">{{d.nombre}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="panel-inferior w-50">
+                    <h3>AVAL (Opcional)</h3>
+                    <div class="field">
+                        <label>Nombre del Aval</label>
+                        <input type="text" [(ngModel)]="pagareData.nombre_aval" name="nombre_aval"
+                            placeholder="Nombre completo">
+                    </div>
+                    <div class="field">
+                        <label>Domicilio del Aval</label>
+                        <input type="text" [(ngModel)]="pagareData.domicilio_aval" name="domicilio_aval"
+                            placeholder="Dirección completa">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="successMessage" class="alert alert-success">{{ successMessage }}</div>
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+        <div class="action-bar">
+            <button type="submit" class="btn-submit">Guardar y Generar Registro</button>
+        </div>
+
+    </form>
+</div>

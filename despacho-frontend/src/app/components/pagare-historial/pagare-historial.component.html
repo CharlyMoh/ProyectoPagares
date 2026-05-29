@@ -1,0 +1,47 @@
+<p>pagare-historial works!</p>
+<div class="historial-container">
+
+    <div class="header-flex">
+        <div>
+            <h2>Historial de Auditoría Interna</h2>
+            <p class="subtitle">Ecosistema inmutable de pagarés emitidos en el despacho.</p>
+        </div>
+        <button *ngIf="rolUsuario === 'Socio'" class="btn-reporte-global" (click)="imprimirReporteGlobal()">
+            Imprimir Reporte de Auditoría Completo
+        </button>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-box">{{ errorMessage }}</div>
+
+    <div class="table-responsive">
+        <table class="tabla-auditoria">
+            <thead>
+                <tr>
+                    <th>Expediente</th>
+                    <th>Abogado Emisor</th>
+                    <th>Deudor</th>
+                    <th>Secuencia</th>
+                    <th>Monto ($)</th>
+                    <th>Vencimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of pagares">
+                    <td><strong>{{ p.numero_expediente }}</strong></td>
+                    <td><span class="abogado-tag">{{ p.abogado_nombre || 'Asignado' }}</span></td>
+                    <td>{{ p.deudor_nombre }}</td>
+                    <td><span class="badge-secuencia">{{ p.numero_pagare }} de {{ p.total_pagares }}</span></td>
+                    <td class="monto">${{ p.monto_numerico }}</td>
+                    <td>{{ p.fecha_vencimiento | date:'dd/MM/yyyy' }}</td>
+                    <td>
+                        <button class="btn-pdf" (click)="verPdf(p.id)">📄 Ver Pagaré</button>
+                    </td>
+                </tr>
+                <tr *ngIf="pagares.length === 0">
+                    <td colspan="7" class="text-center">No se encontraron pagarés registrados en su cuenta.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
