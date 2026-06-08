@@ -1,36 +1,102 @@
+/* Contenedor principal en pantalla completa */
 .login-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0b132b; /* Azul profundo base */
+}
+
+/* ==========================================================================
+   LADO IZQUIERDO: Panel Corporativo / Branding 
+   ========================================================================== */
+.login-sidebar {
+    flex: 1.2;
+    background: linear-gradient(135deg, #1a365d 0%, #0b132b 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* Efecto visual de fondo: sutil entramado tecnológico o de seguridad */
+.login-sidebar::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0.05;
+    background-image: radial-gradient(circle, #ffffff 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+.sidebar-content {
+    max-width: 450px;
+    z-index: 1;
+}
+
+.sidebar-logo {
+    font-size: 64px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+}
+
+.sidebar-content h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.sidebar-content p {
+    font-size: 16px;
+    color: #a0aec0;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* ==========================================================================
+   LADO DERECHO: Formulario Limpio / Moderno 
+   ========================================================================== */
+.login-form-area {
+    flex: 1;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f4f6f9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 40px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+    z-index: 2;
 }
 
 .login-card {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 400px;
+    max-width: 380px;
+    animation: fadeInUp 0.6s ease-out;
 }
 
 h2 {
-    margin-bottom: 5px;
+    font-size: 26px;
+    font-weight: 700;
     color: #1a202c;
-    text-align: center;
+    margin-bottom: 8px;
 }
 
 .subtitle {
     color: #718096;
     font-size: 14px;
-    text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    position: relative;
 }
 
 label {
@@ -38,46 +104,87 @@ label {
     margin-bottom: 8px;
     color: #4a5568;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 13px;
+    letter-spacing: 0.3px;
 }
 
 input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #cbd5e0;
-    border-radius: 6px;
+    padding: 14px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
     box-sizing: border-box;
     font-size: 15px;
+    color: #2d3748;
+    background-color: #f7fafc;
+    transition: all 0.3s ease;
 }
 
+/* Cambios suaves interactivos en los campos */
 input:focus {
     outline: none;
-    border-color: #3182ce;
+    border-color: #2b6cb0;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(43, 108, 176, 0.1);
 }
 
+/* Caja de alertas de seguridad */
 .error-box {
-    background-color: #fed7d7;
-    color: #9b2c2c;
-    padding: 10px;
+    background-color: #fff5f5;
+    color: #c53030;
+    border-left: 4px solid #e53e3e;
+    padding: 12px 16px;
     border-radius: 6px;
-    margin-bottom: 20px;
-    font-size: 14px;
-    text-align: center;
+    margin-bottom: 25px;
+    font-size: 13px;
+    text-align: left;
+    font-weight: 500;
 }
 
+/* Botón estilizado de alta presencia */
 .btn-login {
     width: 100%;
-    padding: 12px;
-    background-color: #2b6cb0;
+    padding: 14px;
+    background: linear-gradient(90deg, #2b6cb0 0%, #1a365d 100%);
     color: white;
     border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: bold;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
     cursor: pointer;
-    transition: background 0.2s;
+    box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+    transition: all 0.3s ease;
 }
 
 .btn-login:hover {
-    background-color: #2c5282;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(43, 108, 176, 0.4);
+    background: linear-gradient(90deg, #2c5282 0%, #2a4365 100%);
+}
+
+.btn-login:active {
+    transform: translateY(1px);
+}
+
+/* Animación de entrada fluida */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Adaptabilidad para pantallas pequeñas (móviles/tabletas) */
+@media (max-width: 868px) {
+    .login-sidebar {
+        display: none; /* Esconde el panel izquierdo en pantallas chicas */
+    }
+    .login-form-area {
+        box-shadow: none;
+    }
 }

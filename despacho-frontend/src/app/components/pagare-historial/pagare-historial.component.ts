@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { DataService } from '../../services/data.service';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-pagare-historial',
   standalone: true,
   // Importamos CommonModule y DatePipe para manejar los bucles y formatos de fecha en el HTML
-  imports: [CommonModule, DatePipe], 
+  imports: [CommonModule, DatePipe, NavbarComponent], 
   templateUrl: './pagare-historial.component.html',
   styleUrls: ['./pagare-historial.component.css']
 })

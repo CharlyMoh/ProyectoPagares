@@ -1,0 +1,20 @@
+<nav class="navbar-corporativa">
+    <div class="nav-brand" (click)="irAlHistorial()">
+        <span class="logo-text">DESPACHO JURÍDICO</span>
+    </div>
+
+    <div class="nav-links">
+        <button class="btn-link" (click)="irAlHistorial()">Historial</button>
+        <button class="btn-link" (click)="irANuevoPagare()">Nuevo Pagaré</button>
+    </div>
+
+    <div class="nav-user-zone">
+        <div class="user-info">
+            <span class="user-name">{{ nombreUsuario }}</span>
+            <span class="user-role">{{ rolUsuario }}</span>
+        </div>
+        <button class="btn-logout" (click)="logout()">
+            Cerrar Sesión
+        </button>
+    </div>
+</nav>

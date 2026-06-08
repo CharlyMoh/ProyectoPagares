@@ -1,24 +1,43 @@
 <div class="login-container">
-    <div class="login-card">
-        <h2>Sistema de Pagarés</h2>
-        <p class="subtitle">Despacho Jurídico - Control de Accesos</p>
 
-        <form (ngSubmit)="onLogin()">
-            <div class="form-group">
-                <label>Correo Institucional</label>
-                <input type="email" name="correo" [(ngModel)]="correo" required placeholder="ejemplo@despacho.com">
-            </div>
+    <div class="login-sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-logo">⚖️</div>
+            <h1>Sistema de Pagarés</h1>
+            <p>Plataforma interna de emisión, serialización mutua y auditoría inmutable para la gestión de carteras
+                legales del despacho.</p>
+        </div>
+    </div>
 
-            <div class="form-group">
-                <label>Contraseña</label>
-                <input type="password" name="password" [(ngModel)]="password" required placeholder="••••••••">
-            </div>
+    <div class="login-form-area">
+        <div class="login-card">
+
+            <h2>Portal Corporativo</h2>
+            <p class="subtitle">Ingrese sus credenciales autorizadas.</p>
 
             <div *ngIf="errorMessage" class="error-box">
-                {{ errorMessage }}
+                ⚠️ {{ errorMessage }}
             </div>
 
-            <button type="submit" class="btn-login">Iniciar Sesión</button>
-        </form>
+            <form (ngSubmit)="onLogin()">
+                <div class="form-group">
+                    <label for="correo">CORREO ELECTRÓNICO</label>
+                    <input type="email" id="correo" name="correo" [(ngModel)]="correo"
+                        placeholder="ejemplo@despacho.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">CONTRASÉÑA</label>
+                    <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="••••••••"
+                        required>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Autenticar Acceso
+                </button>
+            </form>
+
+        </div>
     </div>
+
 </div>

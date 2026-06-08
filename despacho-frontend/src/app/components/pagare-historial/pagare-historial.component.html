@@ -1,12 +1,13 @@
-<p>pagare-historial works!</p>
+<app-navbar></app-navbar>
 <div class="historial-container">
 
     <div class="header-flex">
         <div>
             <h2>Historial de Auditoría Interna</h2>
-            <p class="subtitle">Ecosistema inmutable de pagarés emitidos en el despacho.</p>
+            <p class="subtitle" *ngIf="rolUsuario === 'Socio'">Panel Global Corporativo de Supervisión Financiera.</p>
+            <p class="subtitle" *ngIf="rolUsuario !== 'Socio'">Registro de pagarés serializados bajo su gestión legal.</p>
         </div>
-        <button *ngIf="rolUsuario === 'Socio'" class="btn-reporte-global" (click)="imprimirReporteGlobal()">
+        <button *ngIf="rolUsuario === 'Socio' || rolUsuario === 'Admin'" class="btn-reporte-global" (click)="imprimirReporteGlobal()">
             Imprimir Reporte de Auditoría Completo
         </button>
     </div>
@@ -35,7 +36,7 @@
                     <td class="monto">${{ p.monto_numerico }}</td>
                     <td>{{ p.fecha_vencimiento | date:'dd/MM/yyyy' }}</td>
                     <td>
-                        <button class="btn-pdf" (click)="verPdf(p.id)">📄 Ver Pagaré</button>
+                        <button class="btn-pdf" (click)="verPdf(p.id)">Ver Pagaré</button>
                     </td>
                 </tr>
                 <tr *ngIf="pagares.length === 0">

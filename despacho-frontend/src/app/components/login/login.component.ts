@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-login',
     standalone: true,
-    imports: [CommonModule, FormsModule], // Importamos módulos necesarios para formularios directos
+    imports: [CommonModule, FormsModule], 
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
@@ -25,15 +25,21 @@ export class LoginComponent {
             next: (res) => {
                 console.log('¡Autenticación exitosa!');
 
-                // 1. Recuperamos el rol exacto que devolvió tu API de Node.js
+                // 1. PASO CRUCIAL: Almacenar los datos de respuesta de la API en el localStorage
+                // Ajusta las propiedades (res.token, res.usuario...) según la estructura exacta de tu backend de Node
+                localStorage.setItem('token', res.token);
+                localStorage.setItem('rol', res.usuario.rol);
+                localStorage.setItem('usuario_nombre', res.usuario.nombre);
+
+                // 2. RECUPERAR EL ROL RECIÉN GUARDADO
                 const rol = localStorage.getItem('rol');
 
-                // 2. REDIRECCIÓN DINÁMICA POR ROLES
-                if (rol === 'Socio' || rol === 'Administrador') {
-                    // El Socio Principal va directo al Tablero de Auditoría Global
+                // 3. REDIRECCIÓN INTELIGENTE INTEGRAL
+                // Ahora todos los roles van al Historial para que puedan auditar lo que les corresponde
+                if (rol === 'Socio' || rol === 'Administrador' || rol === 'Abogado Senior' || rol === 'Abogado Junior') {
                     this.router.navigate(['/historial']);
                 } else {
-                    // Los Abogados (Junior/Senior) van directo a la pantalla de captura Formitec para trabajar
+                    // Respaldar por si existe algún rol secundario en el despacho
                     this.router.navigate(['/nuevo-pagare']);
                 }
             },
@@ -42,5 +48,4 @@ export class LoginComponent {
             }
         });
     }
-
 }

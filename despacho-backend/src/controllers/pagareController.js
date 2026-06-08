@@ -7,7 +7,8 @@ exports.crearSeriePagares = async (req, res) => {
         fecha_suscripcion, lugar_suscripcion, estado_suscripcion_id, nombre_aval, domicilio_aval 
     } = req.body;
 
-    const usuario_creador_id = req.usuario.id; // Obtenido del token JWT seguro
+    // CORRECCIÓN 1: Unificado a req.user para emparejar con el authMiddleware
+    const usuario_creador_id = req.user.id; 
 
     try {
         // Cálculo del monto equitativo por cada pagaré individual
@@ -45,22 +46,22 @@ exports.crearSeriePagares = async (req, res) => {
 };
 
 exports.obtenerHistorialPagares = async (req, res) => {
-    // Extraemos el id y el rol que el middleware de autenticación inyecta
+    // Extraemos el id y el rol que el middleware de autenticación inyecta de forma segura
     const { id: usuarioId, rol } = req.user; 
 
     try {
-        // IMPORTANTE: Seleccionar u.nombre AS abogado_nombre y hacer el JOIN usuarios
+        // CORRECCIÓN 2: Cambiados los JOINs y WHEREs para usar 'usuario_creador_id' en lugar de 'usuario_id'
         let query = `
             SELECT p.*, d.nombre AS deudor_nombre, u.nombre AS abogado_nombre
             FROM pagares p
             JOIN deudores d ON p.deudor_id = d.id
-            JOIN usuarios u ON p.usuario_id = u.id
+            JOIN usuarios u ON p.usuario_creador_id = u.id
         `;
         let params = [];
 
-        // Si es un abogado común, solo ve sus propios pagarés
+        // Si es un abogado común (Junior/Senior), solo ve sus propios pagarés creados
         if (rol !== 'Administrador' && rol !== 'Socio') {
-            query += ` WHERE p.usuario_id = ?`;
+            query += ` WHERE p.usuario_creador_id = ?`;
             params.push(usuarioId);
         }
 
